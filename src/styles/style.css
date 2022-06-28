@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.App {
+  background-color: #eee;
+}
+
+.App .container {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.App .container h1 {
+  color: #3f515b;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.App .container p {
+  color: #aaa;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.App .container p .generator-button {
+  color: #b67278;
+  font-weight: 600;
+  font-size: inherit;
+  -webkit-transition: 0.4s ease-out;
+  transition: 0.4s ease-out;
+}
+
+.App .container p :hover {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.App .container h4 {
+  color: #aaa;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.App .container .colours {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+}
+
+.App .container .colours .colour {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  color: #fff;
+  background-color: #1e2f42;
+  -webkit-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+  border: 2px solid transparent;
+  height: 8vh;
+}
+
+.App .container .colours .colour input {
+  text-align: center;
+}
+
+.App .container .colours .lock-toggle {
+  width: 1rem;
+  opacity: 0.5;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.App .container .colours .lock-toggle.is-locked {
+  opacity: 1;
+}
+/*# sourceMappingURL=style.css.map */
