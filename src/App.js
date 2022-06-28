@@ -1,8 +1,26 @@
 import useGenerateRandomColor from "./components/useGenerateRandomColor";
 import "./styles/style.css";
+import React from "react";
 
 function App() {
-  const { color, generateColor } = useGenerateRandomColor();
+  const { colors, generateColor } = useGenerateRandomColor();
+  function Colours() {
+    return colors.map((color) => (
+      <div
+        key={color.id}
+        className="colour"
+        style={{ backgroundColor: color.name }}
+      >
+        <button className="lock-toggle">
+          <img src="./Icon/unlock-solid.svg" />
+        </button>
+        <input type="text" className="colour-input" value="#000000" readOnly />
+
+        <button className="copy-hex">Copy</button>
+      </div>
+    ));
+  }
+
   return (
     <div className="App">
       <div className="container">
@@ -16,21 +34,8 @@ function App() {
         </p>
 
         <h4>Generator</h4>
-
         <div className="colours">
-          <div className="colour">
-            <button className="lock-toggle">
-              <img src="./Icon/unlock-solid.svg" />
-            </button>
-            <input
-              type="text"
-              className="colour-input"
-              value="#000000"
-              readOnly
-            />
-
-            <button className="copy-hex">Copy</button>
-          </div>
+          <Colours />
         </div>
       </div>
     </div>

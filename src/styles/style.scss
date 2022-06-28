@@ -1,3 +1,14 @@
+@mixin pad {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin pc {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
