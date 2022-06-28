@@ -14,7 +14,12 @@ function App() {
         <button className="lock-toggle">
           <img src="./Icon/unlock-solid.svg" />
         </button>
-        <input type="text" className="colour-input" value="#000000" readOnly />
+        <input
+          type="text"
+          className="colour-input"
+          value={color.name}
+          readOnly
+        />
 
         <button className="copy-hex">Copy</button>
       </div>
