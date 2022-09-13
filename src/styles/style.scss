@@ -16,6 +16,7 @@
 }
 .App {
   background-color: #eee;
+  min-height: 100vh;
   .container {
     padding: 4rem 2rem;
     max-width: 1400px;
@@ -121,4 +122,30 @@ input {
 button {
   user-select: none;
   cursor: pointer;
+}
+
+.alert-Container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  .alert {
+    background-color: antiquewhite;
+    width: 20rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    .msg {
+      padding-right: 0.5rem;
+    }
+  }
 }

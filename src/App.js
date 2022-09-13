@@ -1,13 +1,42 @@
 import useGenerateRandomColor from "./components/useGenerateRandomColor";
 import "./styles/style.css";
-import React, { useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Icon from "./components/icon";
+import Alert from "./components/alert";
+import { Animated } from "react-animated-css";
 
 function App() {
-  const { colors, generateColor } = useGenerateRandomColor();
-  const [isLocked, setLocked] = useState(false);
+  const [isLocked, setLocked] = useState({
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+  });
 
-  //寫出6個裝顏色的框框
+  const { colors, generateColor } = useGenerateRandomColor(isLocked);
+  const ToggleLocked = (key) => {
+    const copyLocked = isLocked;
+    copyLocked[key] = !copyLocked[key];
+
+    setLocked({ ...isLocked, copyLocked });
+    console.log(isLocked);
+  };
+
+  const [copy, setCopy] = useState({ alert: false, isVisible: false });
+
+  function copyColour(params) {
+    navigator.clipboard.writeText(params);
+    setCopy({ alert: true, isVisible: true });
+    setTimeout(() => {
+      setCopy({ alert: true, isVisible: false });
+    }, 1000);
+    setTimeout(() => {
+      setCopy({ alert: false, alert: false });
+    }, 1800);
+  }
+
   function Colours() {
     return colors.map((color) => (
       <div
@@ -15,10 +44,17 @@ function App() {
         className="colour"
         style={{ backgroundColor: color.name }}
       >
-        <button className="lock-toggle" onClick={() => color.isLocked}>
-          {console.log(color.isLocked)}
-          {color.isLocked && <Icon.Unlock className="svg" />}
-          {!color.isLocked && <Icon.Lock className="svg" />}
+        <button
+          className="lock-toggle"
+          onClick={() => {
+            ToggleLocked(color.id);
+          }}
+        >
+          {!isLocked[color.id] ? (
+            <Icon.Unlock className="svg" />
+          ) : (
+            <Icon.Lock className="svg" />
+          )}
         </button>
         <input
           type="text"
@@ -27,13 +63,27 @@ function App() {
           value={color.name}
           readOnly
         />
-        <button className="copy-hex">Copy</button>
+        <button className="copy-hex" onClick={() => copyColour(color.name)}>
+          Copy
+        </button>
       </div>
     ));
   }
 
+  useEffect(() => {
+    document.addEventListener("keydown", detectKeyDown, true);
+  }, []);
+
+  const detectKeyDown = (e) => {
+    if (e.code === "Space") generateColor();
+  };
+
   return (
     <div className="App">
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+      ></link>
       <div className="container">
         <h1>Coloors</h1>
         <p>
@@ -51,6 +101,11 @@ function App() {
         <div className="colours">
           <Colours />
         </div>
+        {copy.alert && (
+          <Animated isVisible={copy.isVisible}>
+            <Alert />
+          </Animated>
+        )}
       </div>
     </div>
   );

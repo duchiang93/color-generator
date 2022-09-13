@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
-const useGenerateRandomColor = () => {
+const useGenerateRandomColor = (isLocked) => {
   //製作16進位隨機顏色色號
   function colorRandom() {
     //宣告chars裝16位數字串
@@ -13,18 +14,22 @@ const useGenerateRandomColor = () => {
     }
     return hex;
   }
+
   //宣告array內每個字串的ID
   const num = [0, 1, 2, 3, 4, 5];
   //讓每個字串都有自己的ID才不會有錯
   const [colors, setColor] = useState(
-    num.map((n) => ({ name: colorRandom(), id: n, isLocked: false }))
+    num.map((n) => ({ name: colorRandom(), id: n }))
   );
+
   const generateColor = () => {
     const randomColor = [];
+    colors.map((n) => randomColor.push(n));
     //產生六個不同顏色
     for (let i = 0; i < 6; i++) {
-      randomColor.push({ name: colorRandom(), id: i, isLocked: false });
+      if (isLocked[i] == false) randomColor[i].name = colorRandom();
     }
+
     setColor(randomColor);
   };
   return { colors, generateColor };
