@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const useGenerateRandomColor = (isLocked) => {
   //製作16進位隨機顏色色號
@@ -27,7 +26,7 @@ const useGenerateRandomColor = (isLocked) => {
     colors.map((n) => randomColor.push(n));
     //產生六個不同顏色
     for (let i = 0; i < 6; i++) {
-      if (isLocked[i] == false) randomColor[i].name = colorRandom();
+      if (isLocked[i] === false) randomColor[i].name = colorRandom();
     }
 
     setColor(randomColor);

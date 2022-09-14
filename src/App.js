@@ -1,6 +1,6 @@
 import useGenerateRandomColor from "./components/useGenerateRandomColor";
 import "./styles/style.css";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useRef } from "react";
 import Icon from "./components/icon";
 import Alert from "./components/alert";
 import { Animated } from "react-animated-css";
@@ -21,7 +21,6 @@ function App() {
     copyLocked[key] = !copyLocked[key];
 
     setLocked({ ...isLocked, copyLocked });
-    console.log(isLocked);
   };
 
   const [copy, setCopy] = useState({ alert: false, isVisible: false });
@@ -33,7 +32,7 @@ function App() {
       setCopy({ alert: true, isVisible: false });
     }, 1000);
     setTimeout(() => {
-      setCopy({ alert: false, alert: false });
+      setCopy({ alert: false, isVisible: false });
     }, 1800);
   }
 
@@ -48,6 +47,7 @@ function App() {
           className="lock-toggle"
           onClick={() => {
             ToggleLocked(color.id);
+            div.current.focus();
           }}
         >
           {!isLocked[color.id] ? (
@@ -69,23 +69,19 @@ function App() {
       </div>
     ));
   }
-
-  useEffect(() => {
-    document.addEventListener("keydown", detectKeyDown, true);
-  }, []);
-
+  const div = useRef(null);
   const detectKeyDown = (e) => {
-    if (e.code === "Space") generateColor();
+    if (e.code === "Space") generateColor(isLocked);
   };
 
   return (
-    <div className="App">
+    <div ref={div} className="App" tabIndex="0" onKeyDown={detectKeyDown}>
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
       ></link>
       <div className="container">
-        <h1>Coloors</h1>
+        <h1>Colours</h1>
         <p>
           Press[
           {/* 按下button時會執行generateColor */}
