@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/color-generator/static/css/main.d3dd45e6.css",
+    "main.js": "/color-generator/static/js/main.ff63acad.js",
+    "static/media/nice.svg": "/color-generator/static/media/nice.878167d1ef83dd4aebf1b9560f6e3815.svg",
+    "index.html": "/color-generator/index.html",
+    "static/media/unlock-solid.svg": "/color-generator/static/media/unlock-solid.b40e4ce09ee09d7807b7627de538da3e.svg",
+    "static/media/lock-solid.svg": "/color-generator/static/media/lock-solid.2ac6209e952eacc8f5a0baa11832f728.svg",
+    "main.d3dd45e6.css.map": "/color-generator/static/css/main.d3dd45e6.css.map",
+    "main.ff63acad.js.map": "/color-generator/static/js/main.ff63acad.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d3dd45e6.css",
+    "static/js/main.ff63acad.js"
+  ]
+}
