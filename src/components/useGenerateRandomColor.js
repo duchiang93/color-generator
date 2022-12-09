@@ -6,7 +6,7 @@ const useGenerateRandomColor = (isLocked) => {
     //宣告chars裝16位數字串
     const chars = "0123456789ABCDEF";
     let hex = "#";
-    //產生6個16進為字元組成色號
+    //產生6個16進位字元組成色號
     for (let i = 0; i < 6; i++) {
       //= "#+隨機產生的6位數" 為色號表示方式
       hex += chars[Math.floor(Math.random() * 16)];
